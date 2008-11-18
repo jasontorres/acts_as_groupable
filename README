@@ -29,6 +29,10 @@ end
 Example:
 ======
 
+class User < ActiveRecord::Base
+  acts_as_groupable
+end
+
 # To Join a group use:
 >> User.first.join_group(Group.first)
 
@@ -36,4 +40,4 @@ Example:
 >> User.first.leave_group(Group.first)
 
 
-Copyright (c) 2008 Jason Torres, released under the MIT license
+Ok, so this only took me less than 30 minutes to create. This works and don't be too much of a wise-ass. Go ahead and fork it if you want a better version. K?
