@@ -17,7 +17,7 @@ module Groupable #:nodoc:
     end
     
     def leave_group(group)
-      groups.find(group).destroy
+      ActiveRecord::Base.connection.execute("delete from groups_users where group_id = #{group.id} and user_id = #{id}")
     end
   end
       
