@@ -1,0 +1,39 @@
+ActsAsGroupable
+===============
+
+Fairly simple way to get groups for your rails app
+
+Migration
+=======
+
+class CreateGroups < ActiveRecord::Migration
+  def self.up
+    create_table :groups, :force => true do |t|
+      t.string :name, :description
+      t.timestamps
+    end
+    
+    create_table :groups_users, :force => true do |t|
+      t.integer :group_id, :user_id
+      t.string  :role, :length => 25
+      t.timestamps
+    end
+  end
+
+  def self.down
+    drop_table :group_users
+    drop_table :groups
+  end
+end
+
+Example:
+======
+
+# To Join a group use:
+>> User.first.join_group(Group.first)
+
+# To leave a group use:
+>> User.first.leave_group(Group.first)
+
+
+Copyright (c) 2008 Jason Torres, released under the MIT license
